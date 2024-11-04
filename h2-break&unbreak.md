@@ -1,5 +1,5 @@
 # H2 - Break & Unbreak
-x) Lue/katso/kuuntele ja tiivistä. 
+## x) Lue/katso/kuuntele ja tiivistä. 
 - OWASP: OWASP Top 10: A01 Broken Access Control
   - Pääsynvalvonta rakoilee siten, että dataa voi päästä lukemaan, muokkaamaan ja poistamaan sellainen käyttäjä, jolla ei pitäisi olla siihen oikeuksia. Tämä voi tapahtua esim. URL:ia muokkaamalla.
   - Ongelmaa voi ehkäistä mm. estämällä oletuksena käyttäjän pääsy muihin kuin julkiseen dataan sekä varmistamalla, ettei verkkosivujen juuressa ole tiedostojen metadataa tai varmuuskopiotiedostoja.
@@ -27,9 +27,16 @@ x) Lue/katso/kuuntele ja tiivistä.
 | **Hardware** | innotek Gmhb VirtualBox |
 | **Network** | Intel PRO/1000 MT Desktop (NAT) |
 
-a) Murtaudu 010-staff-only
+## a) Murtaudu 010-staff-only
+
 Saatuani asennettua vaatimukset ja ladattua ja purettua tehtäväpaketin sekä avattua oikean tehtävän, kokeilin tunnillakin mainittua element pickeriä ja klikkasin PIN koodin kirjoituskenttää ja poistin kohdan, jossa syötteelle asetettiin tyypiksi numero.
 
 ![input type poisto](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-staff-only1.png)
 
-Sen jälkeen kokeilin kirjoittaa syötekenttään erilaisia SQL-lauseita (tyyliä SELECT password FROM pins WHERE pin='' OR 1=1--) mutta onnistuin saamaan vain Internal Server Error 500.
+Sen jälkeen kokeilin kirjoittaa syötekenttään erilaisia SQL-lauseita (tyyliä SELECT password FROM pins WHERE pin='' OR 1=1--) mutta onnistuin saamaan vain Internal Server Error 500. Jäin vähän jumiin enkä tiennyt miten edetä, joten menin etsimään apua PortSwiggerin SQL Injection sivuilta. Löysin sieltä seuraavanlaisen koodinpätkän: **' UNION SELECT username, password FROM users--** jota sovelsin sivulle.
+
+![union select](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-staff-only3.png)
+
+
+### Viitteet
+Portswigger: [SQL injection](https://portswigger.net/web-security/sql-injection)
