@@ -67,7 +67,13 @@ Kokeilin silti filtteröidä hack'n fix-sivun mallin mukaisesti, ja sain hakemis
 
 ![flag2](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/ffuf-4.png)
 
+## d) Murtaudu 020-your-eyes-only. Ks. Karvinen 2024: Hack'n Fix
+
+Tämä ja luonnollisesti seuraava tehtävä jäivät tekemättä ensinnäkin ajan puutteen vuoksi ja myös sen takia, etten onnistunut avaamaan tehtävää. Yritin seurata ohjetta tarkkaan, mutta varmaan tein jonkun typon ja kun yritin päivittää tietokantaa, tuli virhe 'command not found'. En enää jaksanut kokeilla käynnistää virtuaalikonetta uudestaan ja aloittaa alusta, joten tehtävä jäi tekemättä.
+
+![h2-your-eyes-only](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-your-eyes-only1.png)
 
 ### Viitteet
 Portswigger: [SQL injection](https://portswigger.net/web-security/sql-injection)
+
 Karvinen 2024: [Hack'n Fix](https://terokarvinen.com/hack-n-fix/)
