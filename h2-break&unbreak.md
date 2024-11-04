@@ -33,10 +33,41 @@ Saatuani asennettua vaatimukset ja ladattua ja purettua tehtäväpaketin sekä a
 
 ![input type poisto](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-staff-only1.png)
 
-Sen jälkeen kokeilin kirjoittaa syötekenttään erilaisia SQL-lauseita (tyyliä SELECT password FROM pins WHERE pin='' OR 1=1--) mutta onnistuin saamaan vain Internal Server Error 500. Jäin vähän jumiin enkä tiennyt miten edetä, joten menin etsimään apua PortSwiggerin SQL Injection sivuilta. Löysin sieltä seuraavanlaisen koodinpätkän: **' UNION SELECT username, password FROM users--** jota sovelsin sivulle.
+Sen jälkeen kokeilin kirjoittaa syötekenttään erilaisia SQL-lauseita (tyyliä SELECT password FROM pins WHERE pin='' OR 1=1--) mutta onnistuin saamaan vain Internal Server Error 500. Jäin vähän jumiin enkä tiennyt miten edetä, joten menin etsimään apua PortSwiggerin SQL Injection sivuilta. Löysin sieltä seuraavanlaisen koodinpätkän: 
+``` ' UNION SELECT username, password FROM users--```
+jota sovelsin sivulle.
 
 ![union select](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-staff-only3.png)
+
+## b) Korjaa 010-staff-only haavoittuvuus lähdekoodista. Osoita testillä, että ratkaisusi toimii.
+
+Koodin korjaaminen lähti käyntiin avaamalla lähdekoodi esille (challenges-kansiosta tiedosto staff-only.py) ja tutkimalla sitä. SQL-kysely on toteutettu koodissa siten, että käyttäjän syöte tallennetaan muuttujaksi, joka annetaan suoraan GET-metodille. Tämä altistaa haavoittuvuudelle, jossa käyttäjä kirjoittaa SQL-koodia syötekenttään.
+
+![lähdekoodi](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-staff-only4.png)
+
+Koitin korjata koodia ensin lisäämällä kysymysmerkin sql-kysely kohtaan 
+```"SELECT password FROM pins WHERE pin='"+pin+"';"```
+ennen pin-koodia toimimaan placeholderina pinille, mutta se ei toiminut. Googlailin ratkaisua, mutta lopulta päädyin katsomaan mallia hack'n fix -sivulta ja muokkasin koodia seuraavanlaisesti:
+
+![korjaus](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-staff-only5.png)
+
+Tämän jälkeen kun testasin syöttää UNION SELECT:iä sivulle, sivu vain päivittyi joten korjaus oli onnistunut.
+
+## c) Ratkaise dirfuzt-1 artikkelista Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf. Tämä auttaa 020-your-eyes-only ratkaisemisessa.
+
+Aloitin ratkaisemaan tehtävää dirfuzt-0 ohjeen mukaisesti. Luulin saaneeni ffufin ladattua ja lukemaan hakemiston sanakirjan verkkopolkujen avulla, mutta kun vertasin vastaustani esimerkkiin, en nähnyt itselläni esimerkiksi kokoa missään, ja ffuf vastauksessani oli paljon virheitä.
+
+![ffuf](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/ffuf-1.png)
+
+Kokeilin silti filtteröidä hack'n fix-sivun mallin mukaisesti, ja sain hakemistot näkyviin. En olisi osannut löytää oikeaa filtteröintiä omasta versiostani.
+
+![ffuf2](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/ffuf-2.png)
+
+![flag1](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/ffuf-3.png)
+
+![flag2](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/ffuf-4.png)
 
 
 ### Viitteet
 Portswigger: [SQL injection](https://portswigger.net/web-security/sql-injection)
+Karvinen 2024: [Hack'n Fix](https://terokarvinen.com/hack-n-fix/)
