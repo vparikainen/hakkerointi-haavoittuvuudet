@@ -18,3 +18,18 @@ x) Lue/katso/kuuntele ja tiivistä.
 - Karvinen 2006: Raportin kirjoittaminen
   - Raportointi tehdään samaan aikaan tehtävän kanssa, kertomalla tarkkaan mitä tehtiin ja mitä tapahtui.
   - Raportoinnin on oltava toistettavaa, täsmällistä, helppolukuista ja lähteisiin on viitattava.
+
+---
+|       |   Ympäristö                |
+|--------- | ------------------------------- |
+| **OS** | Debian 12.7.0  |
+| **Browser** | Firefox 128.3.1esr |
+| **Hardware** | innotek Gmhb VirtualBox |
+| **Network** | Intel PRO/1000 MT Desktop (NAT) |
+
+a) Murtaudu 010-staff-only
+Saatuani asennettua vaatimukset ja ladattua ja purettua tehtäväpaketin sekä avattua oikean tehtävän, kokeilin tunnillakin mainittua element pickeriä ja klikkasin PIN koodin kirjoituskenttää ja poistin kohdan, jossa syötteelle asetettiin tyypiksi numero.
+
+![input type poisto](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-staff-only1.png)
+
+Sen jälkeen kokeilin kirjoittaa syötekenttään erilaisia SQL-lauseita (tyyliä SELECT password FROM pins WHERE pin='' OR 1=1--) mutta onnistuin saamaan vain Internal Server Error 500.
