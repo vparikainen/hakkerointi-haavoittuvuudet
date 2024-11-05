@@ -1,4 +1,4 @@
-# H2 - Break & Unbreak
+<img width="541" alt="image" src="https://github.com/user-attachments/assets/213b7767-54b8-4618-873d-06769afa78e5"># H2 - Break & Unbreak
 ## x) Lue/katso/kuuntele ja tiivistä. 
 - OWASP: OWASP Top 10: A01 Broken Access Control
   - Pääsynvalvonta rakoilee siten, että dataa voi päästä lukemaan, muokkaamaan ja poistamaan sellainen käyttäjä, jolla ei pitäisi olla siihen oikeuksia. Tämä voi tapahtua esim. URL:ia muokkaamalla.
@@ -69,9 +69,17 @@ Kokeilin silti filtteröidä hack'n fix-sivun mallin mukaisesti, ja sain hakemis
 
 ## d) Murtaudu 020-your-eyes-only. Ks. Karvinen 2024: Hack'n Fix
 
-Tämä ja luonnollisesti seuraava tehtävä jäivät tekemättä ensinnäkin ajan puutteen vuoksi ja myös sen takia, etten onnistunut avaamaan tehtävää. Yritin seurata ohjetta tarkkaan, mutta varmaan tein jonkun typon ja kun yritin päivittää tietokantaa, tuli virhe 'command not found'. En enää jaksanut kokeilla käynnistää virtuaalikonetta uudestaan ja aloittaa alusta, joten tehtävä jäi tekemättä.
+Saatuani testi serverin pyörimään ja sivun auki, tehtävänäni oli löytää tieni administrative consoleen. Etusivulla oli näkyvillä kaksi painiketta ('Show my personal data' sekä 'Admin dashboard') joita molempia klikkaamalla päätyi kirjautumissivulle. Etusivun oikeassa yläkulmassa oli myös tie kirjautumis- ja rekisteröitymissivuille.
 
-![h2-your-eyes-only](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-your-eyes-only1.png)
+![h2-your-eyes-only-frontpage](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-your-eyes-only2.png)
+
+Koska edellisen tehtävän tuli auttaa tämän ratkaisemisessa, fuzzasin sivun heti alkuun edellistä tehtävää mukaillen. Sieltä löytyi heti polku 'admin-console', mutta edessä oli yhä kirjautumisongelma, sillä vaikka tiesinkin osoitteen mihin mennä, en päässyt sinne ilman, että eteen lävähti kirjautumissivu.
+
+![fuzzaus](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-your-eyes-only3.png)
+
+Kokeilin rekisteröityä sivulle luomalla tunnuksen 'user' salasanalla 'testi123'. Sain auki henkilökohtaisen datan sivun. Klikkaamalla admin dashboardia eteen tuli '403 Forbidden' -sivu. Kokeilin laittaa 'admin-console'-endpointin kun olin kirjautunut sisään, ja pääsin kielletylle sivulle.
+
+![ratkaisu](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-your-eyes-only4.png)
 
 ### Viitteet
 Portswigger: [SQL injection](https://portswigger.net/web-security/sql-injection)
