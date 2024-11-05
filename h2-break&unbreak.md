@@ -1,4 +1,4 @@
-<img width="541" alt="image" src="https://github.com/user-attachments/assets/213b7767-54b8-4618-873d-06769afa78e5"># H2 - Break & Unbreak
+# H2 - Break & Unbreak
 ## x) Lue/katso/kuuntele ja tiivistä. 
 - OWASP: OWASP Top 10: A01 Broken Access Control
   - Pääsynvalvonta rakoilee siten, että dataa voi päästä lukemaan, muokkaamaan ja poistamaan sellainen käyttäjä, jolla ei pitäisi olla siihen oikeuksia. Tämä voi tapahtua esim. URL:ia muokkaamalla.
@@ -80,6 +80,16 @@ Koska edellisen tehtävän tuli auttaa tämän ratkaisemisessa, fuzzasin sivun h
 Kokeilin rekisteröityä sivulle luomalla tunnuksen 'user' salasanalla 'testi123'. Sain auki henkilökohtaisen datan sivun. Klikkaamalla admin dashboardia eteen tuli '403 Forbidden' -sivu. Kokeilin laittaa 'admin-console'-endpointin kun olin kirjautunut sisään, ja pääsin kielletylle sivulle.
 
 ![ratkaisu](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-your-eyes-only4.png)
+
+## e) Korjaa 020-your-eyes-only haavoittuvuus. Osoita testillä, että ratkaisusi toimii.
+
+Koodin korjaaminen lähti käyntiin avaamalla lähdekoodi. Kesti hetken löytää oikea tiedosto, sillä toisin kuin tehtävässä 010-staff-only, tässä tiedostoja oli useampi kuin yksi. Koska haavoittuvuus liittyi käyttäjien oikeuksiin, availin läpi eri views.py -tiedostoja kunnes haavoittuvuus löytyi hats-kansion alta, jossa luokan 'AdminShowAllView' return-statementistä puuttui funktiossa 'AdminDashboardView' ollut self.request.user.is_staff -varmistus.
+
+![virheen-korjaus](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-your-eyes-only5.png)
+
+Lisättyäni koodinpätkän koitin vielä mennä admin consoleen, mutta nyt '403 Forbidden' tuli vaikka olin kirjautunut sisään.
+
+![korjaus-onnistui](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h2-your-eyes-only6.png)
 
 ### Viitteet
 Portswigger: [SQL injection](https://portswigger.net/web-security/sql-injection)
