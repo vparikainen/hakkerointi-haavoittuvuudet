@@ -35,6 +35,15 @@ Tallennettuani editoidun version koodista ihmettelin hetken, miksi muutokset eiv
 
 ## c) Packd. Aja 'packd' paketista ezbin-challenges.zip. Mikä on salasana? Mikä on lippu? (Tämä tehtävä on hieman haastavampi. Kirjaa ylös kokeilemasi lähestymistavat ja keksimäsi hypoteesit. Toivottavasti pääset itse maaliin, mutta jos et, läpikävely paljastuu tunnilla...)
 
+Ajoin packd-tiedoston ja se kysyi passr-tapaan salasanaa, jota en tiennyt. Ajoin stringsin ja listalta huomasi, että jonkun sorttista obfuskointia oli käytetty, sillä salasanaa ei näkynyt ja osa merkkijonoista, jotka olivat samankaltaisia kuin passr:ssä, oli joko katkenneita tai sisälsi muita merkkejä.
+
+![VAIHDA KUVA](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h3-passtr6.png)
+
+Seuraavaksi ajattelin avata lähdetiedoston, mutta toisin kuin passr:ssä, packd ei sisältänytkään packd.c -tiedostoa. Tämä vähän raavitutti päätä, ja ryhdyinkin googlaamaan, miten 'excecutable' -tiedostoa voisi lukea ja muokata. Kävi ilmi, että binääristä on liki mahdoton saada takaisin alkuperäistä tiedostoa, mutta on olemassa joitakin decompilereita (kuten [boomerang](https://boomerang.sourceforge.net/)), joilla saa aikaan jonkinlaista luettavaa koodia.
+
+Lähdin seuraamaan boomerangin asennusohjeita sivulta. 
+
+
 ### Viitteet
 
 yurisk.info - [Binary obfuscation - String obfuscating in C](https://yurisk.info/2017/06/25/binary-obfuscation-string-obfuscating-in-C/)
