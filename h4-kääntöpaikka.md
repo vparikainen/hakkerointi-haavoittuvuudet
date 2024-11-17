@@ -66,6 +66,8 @@ Kokeilin sitten tätä suoraan ja sehän oli oikea ratkaisu.
 
 Tämäkin crackme pyysi yhtä arvoa. Avasin tiedoston Ghidralla ja tälläkin kertaa defined strings näytti oikean vastauksen.
 
+![crackme01 strings](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h4-crackme4.png)
+
 Mutkiakin oli tosin matkassa, sillä tällä kertaa merkkijonon eteen piti laittaa hipsut, ettei komentokehote yritä suorittaa olematonta !paas.k -kehotetta. Hipsujen kanssa ratkaisu kuitenkin tuli esille.
 
 ![crackme01 strings](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h4-crackme5.png)
