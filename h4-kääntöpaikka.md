@@ -64,15 +64,32 @@ Kokeilin sitten tätä suoraan ja sehän oli oikea ratkaisu.
 
 ## e) Nora crackme01e. Ratkaise binääri.
 
-Tämäkin crackme pyysi yhtä argumenttiä. Avasin tiedoston Ghidralla ja tälläkin kertaa defined strings näytti oikean vastauksen.
-
-![crackme01e strings](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h4-crackme4.png)
+Tämäkin crackme pyysi yhtä arvoa. Avasin tiedoston Ghidralla ja tälläkin kertaa defined strings näytti oikean vastauksen.
 
 Mutkiakin oli tosin matkassa, sillä tällä kertaa merkkijonon eteen piti laittaa hipsut, ettei komentokehote yritä suorittaa olematonta !paas.k -kehotetta. Hipsujen kanssa ratkaisu kuitenkin tuli esille.
 
 ![crackme01 strings](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h4-crackme5.png)
 
 ## f) Nora crackme02. Nimeä pääohjelman muuttujat käänteismallinnetusta binääristä ja selitä ohjelman toiminta. Ratkaise binääri.
+
+Edellisten crackme-tehtävien tavoin tämäkin pyysi yhtä arvoa. Avasin tiedoston Ghidralla decompilerissa.  Jos ensimmäinen parametri == 2, suoritetaan arvon tarkistus, jolloin kaksi alkuperäisistä muuttujista määritellään arvoilla 'p' ja 0.
+
+![crackme01 strings](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h4-crackme6.png)
+
+Tuijotin koodia aika pitkään, kunnes lopulta päädyin tällaiseen lopputulemaan sen toiminnasta:
+1. Ohjelman main-funktiosta näkee, että se saa arvona kaksi parametriä, ja funktion alussa määritellään neljä muuttujaa (cVar1, cVar2, uVar3 ja lVar4). Jos funktion ensimmäinen parametri on arvoltaan kaksi, mennään 'salasanan' tarkistuslooppiin. 
+2. Tarkistusloopissa cVar määritellään 'p':ksi ja lVar4 0:ksi. Sen jälkeen cVar1 määritellään toisen parametrin mukaan seuraavasti: ``cVar1 = *char *)*( long *)(param_2 + 8) + lVar4);``.
+3. Jos ``cVar1 =='\0'``, loopin suoritus katkeaa. Jos ``cVar2 + -1 != (int)cVar1``, 'salasana' on väärä.
+4. cVar2 määritellään "password1"[lVar4 +1], jonka jälkeen lVar4:sta tulee 1.
+5. Jos ``cVar != '\0'``, salasana on oikea. uVar3:sta tulee nolla.
+
+Päädyin nimeämään muuttujat seuraavanlaisesti:
+
+![crackme01 strings](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h4-crackme7.png)
+
+Tässä kohtaa en oikein osannut tulkita, miten oikea 'salasana' muodostuu. Katsoin apua Nora Crackme:n [ohjeesta](#viitteet), ja tajusin, että ohjelma muuttaa merkkijonoa 'password1' loopissa siten, että joka kierroksella yksi indeksin osa vähenee yhdellä, eli periaatteessa p:stä tulee o jne. Näin ollen ASCII:n mukaan oikea salasana on **o`rrvnqc0**
+
+![crackme01 strings](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h4-crackme8.png)
 
 ### Viitteet
 
