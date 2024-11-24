@@ -7,7 +7,7 @@
 | **Network** | Intel PRO/1000 MT Desktop (NAT) |
 ## a) Lab1. Tutkiminen mikä on ohjelmassa vialla ja miten se korjataan.
 
-Aloitin tehtävän ratkaisemisen kääntämällä koodin gnu debuggerilla ajettavaan muotoon ja avaamalla gdb:n.
+Käytin tehtävän ratkaisemisen tukena Low Leveling [youtubevideota](#viitteet). Aloitin kääntämällä koodin gnu debuggerilla ajettavaan muotoon ja avaamalla gdb:n.
 
 ![gdb aloitus](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h5-lab1.png)
 
@@ -19,8 +19,16 @@ Ohjelmassa näyttäisi olevan sellainen vika, että jos tulostettava viesti on N
 
 ## b) Lab2. Selvitä salasana ja lippu + kirjoita raportti siitä miten aukesi.
 
+Avasin Lab2-kansiosta passtr-kansion ja käänsin passtr.c-tiedoston gnu debuggerille edellisen tehtävän tavoin. Kun avasin gnu:n, salasana ja lippu olivat näkyvillä koodissa ja aloin pohtia, olenko nyt avannut jonkun väärän tiedoston kun ne löytyivät näin helposti. Suoritin koodin ja salasana oli _sala-hakkeri-321_ ja lippu _FLAG{Tero-d75ee66af0a68663f15539ec0f46e3b1}_.
+
+![gdb passtr.c](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h5-lab2.png)
+
 ## c) Lab3. Kokeile Nora Crackmes harjoituksia tehtävä 3 ja 4 ja loput vapaaehtoisia. 
 
+
+
 ### Viitteet
+
+Low Level: [GDB is REALLY easy! Find Bugs in Your Code with Only A Few Commands](https://www.youtube.com/watch?v=Dq8l1_-QgAc&ab_channel=LowLevel)
 
 Nora CrackMe: [NoraCodes/crackmes](https://github.com/NoraCodes/crackmes)
