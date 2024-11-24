@@ -45,7 +45,7 @@ Muodostin ja avasin crackme04.64-tiedoston, joka pyysi yhtä argumenttia. Kään
 
 ![crackme03](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h5-crackme4.png)
 
-
+Tässä vaiheessa tajusin, että olen periaatteessa vain avannut source tiedostot debuggerilla ja katsonut vastaukset sieltä, vaikka crackme-tehtävien idea olisi yrittää murtaa koodit katsomatta lähdettä.
 
 ### Viitteet
 
