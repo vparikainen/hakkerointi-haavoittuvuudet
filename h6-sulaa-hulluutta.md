@@ -25,11 +25,30 @@ Ajoin ``binwalk -e``-komennon avatakseni zip-tiedostot, siirryin uuteen kansioon
 
 ![zipin sisältö](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-jpg3.png)
 
-
+En ole varma, miten tiedostoja olisi paras tapa lähteä avaamaan.
 
 ## c) FOSS (Free Android OpenSource). Tutustu Android-sovelluksiin Offan (2024) listalta: Android FOSS. Valitse listalla itsellesi mielenkiintoisin applikaatio ja mene sen GitHubiin. Lataa ohjelman APK itsellesi ja käytä seuraavia työkaluja tutustuaksesi, miten APK:n voi avata.
+
+Valitsin listalta sovelluksen [FreePaint](#viitteet)
+
 - ZIP
+
+Purin _app-release.apk_-tiedoston kansioon _drawing_app_ ja katsoin, mitä sen sisällä on.
+
+  ![zip apk](github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss1.png)
+
 - JADX
+
+Latasin jadx:n ja avasin sillä _app-release.apk_-tiedoston. Jadx raksutti hetken, ja sitten pääsin käsiksi apk:n lähdekoodiin.
+
+![jadx apk](github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss2.png)
+
 - Bytecode-viewer
 
+Latasin bytecode-viewerin ja avasin _app-release.apk_-tiedoston sillä.
+
+![bytecode apk](github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss3.png)
+
 ### Viitteet
+
+Android FOSS: [FreePaint](https://github.com/pastthepixels/FreePaint)
