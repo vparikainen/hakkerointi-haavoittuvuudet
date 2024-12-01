@@ -35,19 +35,19 @@ Valitsin listalta sovelluksen [FreePaint](#viitteet)
 
 Purin _app-release.apk_-tiedoston kansioon _drawing_app_ ja katsoin, mitä sen sisällä on.
 
-  ![zip apk](github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss1.png)
+![zip apk](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss1.png)
 
 - JADX
 
 Latasin jadx:n ja avasin sillä _app-release.apk_-tiedoston. Jadx raksutti hetken, ja sitten pääsin käsiksi apk:n lähdekoodiin.
 
-![jadx apk](github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss2.png)
+![jadx apk](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss2.png)
 
 - Bytecode-viewer
 
 Latasin bytecode-viewerin ja avasin _app-release.apk_-tiedoston sillä.
 
-![bytecode apk](github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss3.png)
+![bytecode apk](https://github.com/vparikainen/hakkerointi-haavoittuvuudet/blob/main/pics/h6-foss3.png)
 
 ### Viitteet
 
